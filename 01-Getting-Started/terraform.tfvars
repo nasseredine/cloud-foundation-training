@@ -14,5 +14,5 @@
  * limitations under the License.
  */
 
-project_id = "" # Insert Project ID here
-region     = "" # Insert Region here
+project_id = "cft-training-3a"
+region     = "europe-west9"
