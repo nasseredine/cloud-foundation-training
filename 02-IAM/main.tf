@@ -46,5 +46,37 @@ terraform {
  *
  */
 module "project_iam_bindings" {
+  source  = "terraform-google-modules/iam/google//modules/projects_iam"
+  version = "~> 7.7"
 
+  projects = [var.project_id]
+
+  mode = "additive"
+
+  bindings = {
+    "roles/cloudfunctions.admin" = [
+      "serviceAccount:sa-cft-training@${var.project_id}.iam.gserviceaccount.com",
+    ]
+
+    "roles/compute.admin" = [
+      "serviceAccount:sa-cft-training@${var.project_id}.iam.gserviceaccount.com",
+    ]
+
+    "roles/compute.networkAdmin" = [
+      "serviceAccount:sa-cft-training@${var.project_id}.iam.gserviceaccount.com",
+    ]
+
+    "roles/iam.serviceAccountAdmin" = [
+      "serviceAccount:sa-cft-training@${var.project_id}.iam.gserviceaccount.com",
+    ]
+
+    "roles/serviceusage.serviceUsageAdmin" = [
+      "serviceAccount:sa-cft-training@${var.project_id}.iam.gserviceaccount.com",
+    ]
+
+    "roles/storage.admin" = [
+      "serviceAccount:sa-cft-training@${var.project_id}.iam.gserviceaccount.com",
+    ]
+
+  }
 }
