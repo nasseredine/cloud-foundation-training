@@ -42,7 +42,18 @@ terraform {
  *
  */
 module "network" {
+  source  = "terraform-google-modules/network/google"
+  version = "~> 9.0"
 
+  project_id   = module.project_iam_bindings.projects[0]
+  network_name = "bdev-cft-training-vpc-net-primary"
+  subnets = [
+    {
+      subnet_name   = "bdev-cft-training-vpc-subnet-primary"
+      subnet_ip     = "10.0.10.0/24"
+      subnet_region = var.region
+    }
+  ]
 }
 
 /**
@@ -59,5 +70,11 @@ module "network" {
  *
  */
 module "cloud_nat" {
-
+  source        = "terraform-google-modules/cloud-nat/google"
+  version       = "~> 5.0"
+  project_id    = var.project_id
+  region        = var.region
+  create_router = true
+  router        = "bdev-cft-training-nat-router-primary"
+  network       = module.network.network_name
 }
