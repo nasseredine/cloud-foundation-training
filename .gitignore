@@ -1,5 +1,8 @@
 .DS_Store
 
+# Google Cloud SA credentials
+sa-cft-training.json
+
 # Local .terraform directories
 **/.terraform/*
 
