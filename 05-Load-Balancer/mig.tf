@@ -38,6 +38,7 @@ module "instance_template" {
   source_image_family  = "debian-10"
   source_image_project = "debian-cloud"
   startup_script       = data.local_file.instance_startup_script.content
+  machine_type         = "e2-micro"
   service_account = {
     email  = google_service_account.instance_group.email
     scopes = ["cloud-platform"]
