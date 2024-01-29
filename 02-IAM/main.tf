@@ -55,28 +55,32 @@ module "project_iam_bindings" {
 
   bindings = {
     "roles/cloudfunctions.admin" = [
-      "serviceAccount:sa-cft-training@${var.project_id}.iam.gserviceaccount.com",
+      local.sa_cft_training,
     ]
 
     "roles/compute.admin" = [
-      "serviceAccount:sa-cft-training@${var.project_id}.iam.gserviceaccount.com",
+      local.sa_cft_training,
     ]
 
     "roles/compute.networkAdmin" = [
-      "serviceAccount:sa-cft-training@${var.project_id}.iam.gserviceaccount.com",
+      local.sa_cft_training,
     ]
 
     "roles/iam.serviceAccountAdmin" = [
-      "serviceAccount:sa-cft-training@${var.project_id}.iam.gserviceaccount.com",
+      local.sa_cft_training,
     ]
 
     "roles/serviceusage.serviceUsageAdmin" = [
-      "serviceAccount:sa-cft-training@${var.project_id}.iam.gserviceaccount.com",
+      local.sa_cft_training,
     ]
 
     "roles/storage.admin" = [
-      "serviceAccount:sa-cft-training@${var.project_id}.iam.gserviceaccount.com",
+      local.sa_cft_training,
     ]
 
   }
+}
+
+locals {
+  sa_cft_training = "serviceAccount:sa-cft-training@${var.project_id}.iam.gserviceaccount.com"
 }
